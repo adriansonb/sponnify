@@ -20,12 +20,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       --sponny-secondcolor: white;
       --position-top: 100px;
       --position-left: 100px;
+      --title-font: ExoB;
+      --button-font: ExoB;
+
       background-color: var(--sponny-secondcolor);
     }
 
     .canvas {
       width: 100vw;
-      height: 70vh;
+      height: 80vh;
       @apply(--layout-vertical);
       position: relative;
       overflow: hidden;
@@ -33,8 +36,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
 
-    .canvas img {
-      width: 100vw;
+    .title img {
+      min-width: 100vw;
     }
 
     .title {
@@ -63,6 +66,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     text-shadow: 2px 2px var(--sponny-color);
     margin: 0px;
     padding: 0px; 
+
+
   }
 
   h3 {
@@ -80,7 +85,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       background-color: white;
       @apply(--layout-horizontal);
       @apply(--layout-center-center);
-      border-bottom: 1px solid grey;
+      border-bottom: 1px solid rgba(0,0,0,0.2);
     }
 
     .nav button {
@@ -92,8 +97,69 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       border-radius: 5px;
       padding: 20px;
       margin: 3px; 
-      font-size: 20px;
-      text-transform: uppercase;
+      font-size: 16px;
+    }
+
+
+
+    .extrainfo {
+      width: 100%;
+      padding: 2vw 8vw 2vw 8vw; 
+      box-sizing: border-box;
+      border-bottom: 1px solid rgba(0,0,0,0.2);
+    }
+
+
+    .footer {
+      width: 100%;
+      padding: 2vw 8vw 2vw 8vw; 
+      box-sizing: border-box;
+     @apply(--layout-horizontal);
+      @apply(--layout-center-center);
+    }
+
+
+
+@font-face {
+    font-family: Alex;
+    src: url(../../fonts/AlexBrush-Regular.ttf);
+}
+
+@font-face {
+    font-family: Chunk;
+    src: url(../../fonts/Chunkfive.otf);
+}
+
+@font-face {
+    font-family: ExoB;
+    src: url(../../fonts/Exo-ExtraBoldItalic.otf);
+}
+
+@font-face {
+    font-family: ExoL;
+    src: url(../../fonts/Exo-ThinItalic.otf);
+}
+
+
+
+
+
+
+h2 {
+  font-family: var(--title-font);
+}
+
+
+    .nav button {
+  font-family: var(--title-font);
+
+    }
+
+
+    .extrainfo p {
+  font-family: ExoL;
+  font-size: 15px;
+
     }
 
 
@@ -116,6 +182,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <button>Contacteer ons nu!</button>
         <button>Vrijblijvende offerte</button>
       </div>
+
+    <div contenteditable="true" class="extrainfo">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel arcu malesuada, dignissim est non, aliquet neque. Aenean eget dolor semper, suscipit magna a, volutpat massa. Morbi orci dolor, facilisis quis urna ut, vehicula egestas libero. Cras commodo tincidunt tortor a dapibus. Curabitur accumsan augue nisi, et interdum justo varius vel. Donec rhoncus posuere semper. In hac habitasse platea dictumst. Nullam quis tellus ac purus mollis lobortis. Mauris facilisis, augue non aliquam suscipit, metus justo pharetra odio, sed pharetra sapien turpis a nulla. Fusce sollicitudin turpis a nibh congue, non consectetur velit varius. Suspendisse potenti. Sed mauris mauris, pretium eu lacus vel, suscipit tempus lorem. Etiam non metus sed erat dictum egestas. Pellentesque ut eros quis lorem porta sodales. Phasellus a augue et ante ornare mollis. Aenean pellentesque posuere metus.
+
+Cras maximus purus vitae blandit lobortis. Nam sit amet magna ut erat sodales sollicitudin at id massa. Etiam ut felis sodales, hendrerit purus elementum, dignissim dolor. Duis semper ut est vitae molestie. Curabitur sem dui, iaculis id libero at, auctor porta dolor. Nulla lacinia efficitur vehicula. Proin id ante sit amet metus tempus sollicitudin sit amet in mauris. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed libero tellus, consequat sed diam vel, euismod accumsan lacus. Donec sit amet ipsum ut lectus faucibus pellentesque id ac dui. Nulla elementum velit et tortor rutrum, eu iaculis ex luctus. Quisque eu ipsum vel nunc accumsan ultrices.
+      </p>
+
+    </div>
+
+    <div class="footer">
+
+
+    </div>
 
   </template>
   <script>
@@ -143,15 +223,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           },
           notify: true
         },
-        toppos: {
-          type: Number,
-          value: 100
+
+        fonts: {
+          type: Array,
+          value: [ { font: "Alex" },{ font: "Chunk" },{ font: "ExoB" },{ font: "ExoL" } ],
+          notify: true
+        },
+
+        kleuren: {
+          type: Array,
+          value: [ { kleur: "red" },{ kleur: "blue" },{ kleur: "green" },{ kleur: "grey" } ],
+          notify: true
         }
+
+
       },
 
 
       randomizeMe: function(){
         this.image = "images/sponnet-"+Math.floor((Math.random() * 18) + 1)+".png";
+        var fontnummer = Math.floor((Math.random() * 4));
+        var randomfont = this.fonts[fontnummer].font;
+        this.customStyle['--title-font'] = randomfont;
+
+        var kleurnummer = Math.floor((Math.random() * 4));
+        var randomkleur = this.kleuren[kleurnummer].kleur;
+        console.log(randomkleur);
+        this.customStyle['--sponny-color'] = randomkleur;
+
+        this.updateStyles(); 
       },
 
       up: function(){
@@ -182,6 +282,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             console.log(this.message);
             break;
         }
+
       }
 
 
