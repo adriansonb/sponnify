@@ -1,0 +1,86 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="sponnify-stage">
+
+
+  <style>
+    :host {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .stage {
+      background-color: red;
+      width: 100%;
+      height: 100%;
+      @apply(--layout-vertical);
+    }
+
+
+    paper-toolbar {
+      @apply(--layout-horizontal);
+      width: 100%;
+
+
+    }
+
+
+
+
+  </style>
+
+
+
+
+  <template>
+
+
+    <div class="stage">
+
+      <paper-toolbar>
+        <button>Sponnify!</button>
+      </paper-toolbar>
+
+      <sponnify-canvas>
+      </sponnify-canvas>
+    </div>
+
+
+  </template>
+
+
+  <script>
+  (function() {
+    Polymer({
+      is: 'sponnify-stage',
+
+      properties: {
+
+        sponny: {
+          type: String,
+          value: 'bar',
+          notify: true
+        },
+
+                sponnyttt: {
+          type: String,
+          value: 'bar',
+          notify: true
+        }
+
+      }
+    });
+  })();
+  </script>
+</dom-module>
