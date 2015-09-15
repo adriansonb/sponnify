@@ -36,7 +36,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </style>
   <template>
     <div class="canvas">
-      <img src="images/SponnyHipster1.png">
+      <img src="{{image}}">
 
     </div>
   </template>
@@ -46,12 +46,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       is: 'sponnify-canvas',
 
       properties: {
-        foo: {
-          type: String,
-          value: 'bar',
+        image: {
+          type: Number,
+          value: function(){
+            var image = "images/sponnet-"+Math.floor((Math.random() * 10) + 1)+".png";
+            console.log(image);
+            return image;
+          },
           notify: true
         }
+      },
+
+
+      randomizeMe: function(){
+        this.image = "images/sponnet-"+Math.floor((Math.random() * 10) + 1)+".png";
       }
+
+
     });
   })();
   </script>
