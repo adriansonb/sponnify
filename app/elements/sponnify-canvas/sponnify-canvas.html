@@ -33,7 +33,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     .canvas img {
       width: 100vw;
-      height: 100vh;
     }
 
     .title {
@@ -44,11 +43,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       right: 0;*/
       position: absolute;
       width: 100%;
-      background-color: blue;
+      height: 100%;
+      background-color: transparent;
 
       @apply(--layout-vertical);
       @apply(--layout-center-center);
-      padding-top: 20vh;   
+      
     }
 
 
@@ -75,10 +75,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <template>
     <div class="canvas">
 
-<!--       <div class="title">
-        <h2>Hoeden Sponnet</h2>
-        <h3>Hipsterhoed, die staat je goed!</h3>
-      </div> -->
+      <div class="title">
+        <h2>{{spontitel}}</h2>
+        <h3>{{sponondertitel}}</h3>
+      </div>
 
       <img src="images/SponnyHipster1.png">
 
@@ -90,11 +90,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       is: 'sponnify-canvas',
 
       properties: {
-        foo: {
+        spontitel: {
           type: String,
-          value: 'bar',
+          value: "Sponny's Hoeden!",
           notify: true
-        }
+        },
+        sponondertitel: {
+          type: String,
+          value: "Hipsterhoed, die staat je goed!",
+          notify: true
+        },
       }
     });
   })();
