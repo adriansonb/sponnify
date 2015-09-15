@@ -18,19 +18,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       height: 100%;
       background-color: blue;
       --sponny-color: red;
-      position: relative;
 
     }
 
     .canvas {
-      width: 100%;
+      width: 100vw;
+      height: 50vh;
       @apply(--layout-vertical);
-      @apply(--layout-center-center);            
+      position: relative;
+      overflow: hidden;
+            
     }
 
 
     .canvas img {
       width: 100vw;
+      height: 100vh;
     }
 
     .title {
@@ -41,6 +44,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       right: 0;*/
       position: absolute;
       width: 100%;
+      background-color: blue;
 
       @apply(--layout-vertical);
       @apply(--layout-center-center);
@@ -71,10 +75,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <template>
     <div class="canvas">
 
-      <div class="title">
+<!--       <div class="title">
         <h2>Hoeden Sponnet</h2>
         <h3>Hipsterhoed, die staat je goed!</h3>
-      </div>
+      </div> -->
 
       <img src="images/SponnyHipster1.png">
 
