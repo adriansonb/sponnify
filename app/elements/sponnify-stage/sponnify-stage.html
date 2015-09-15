@@ -49,10 +49,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <div class="stage">
 
       <paper-toolbar>
-        <button>Sponnify!</button>
+        <button on-click="randomize">Sponnify!</button>
       </paper-toolbar>
 
-      <sponnify-canvas>
+      <sponnify-canvas id="canvas">
       </sponnify-canvas>
     </div>
 
@@ -79,6 +79,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           notify: true
         }
 
+      },
+
+      randomize: function(){
+        this.$.canvas.randomizeMe();
       }
     });
   })();
