@@ -18,8 +18,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       height: 100%;
       --sponny-color: red;
       --sponny-secondcolor: white;
-      --position-top: 100px;
-      --position-left: 100px;
+      --position-top: 0px;
+      --position-left: 0px;
       --title-font: ExoB;
       --button-font: ExoB;
 
@@ -254,13 +254,6 @@ Cras maximus purus vitae blandit lobortis. Nam sit amet magna ut erat sodales so
         this.updateStyles(); 
       },
 
-      up: function(){
-        //console.log('up! ', this.customStyle['--position-top']);
-        
-      },
-
-      down: function(){},
-
       handleTrack: function(e) {
         switch(e.detail.state) {
           case 'start':
@@ -282,7 +275,6 @@ Cras maximus purus vitae blandit lobortis. Nam sit amet magna ut erat sodales so
             console.log(this.message);
             break;
         }
-
       }
 
 
