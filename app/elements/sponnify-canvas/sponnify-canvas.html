@@ -18,12 +18,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       height: 100%;
       --sponny-color: red;
       --sponny-secondcolor: white;
-
+      --position-top: 100px;
+      --position-left: 100px;
       background-color: var(--sponny-secondcolor);
-
-
-
-
     }
 
     .canvas {
@@ -41,15 +38,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
     .title {
-/*    position: absolute;
-      top: 0;
+      position: absolute;
+      /*top: 0;
       bottom: 0;
       left: 0;
       right: 0;*/
-      position: absolute;
-      width: 100%;
-      height: 100%;
+      width: 300px;
+      height: 300px;
       background-color: transparent;
+
+      top: var(--position-top); 
+      left: var(--position-left);
 
       @apply(--layout-vertical);
       @apply(--layout-center-center);
@@ -103,7 +102,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <div class="canvas">
 
 
-      <div class="title">
+      <div class="title" on-track="handleTrack">
         <h2 contenteditable="true">{{spontitel}}</h2>
         <h3 contenteditable="true">{{sponondertitel}}</h3>
       </div>
@@ -143,12 +142,46 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             return image;
           },
           notify: true
+        },
+        toppos: {
+          type: Number,
+          value: 100
         }
       },
 
 
       randomizeMe: function(){
         this.image = "images/sponnet-"+Math.floor((Math.random() * 18) + 1)+".png";
+      },
+
+      up: function(){
+        //console.log('up! ', this.customStyle['--position-top']);
+        
+      },
+
+      down: function(){},
+
+      handleTrack: function(e) {
+        switch(e.detail.state) {
+          case 'start':
+            this.message = 'Tracking started!';
+            console.log(this.message);
+            break;
+          case 'track':
+            this.message = 'Tracking in progress... ' +
+              e.detail.x + ', ' + e.detail.y;
+              console.log(this.message);
+              this.titleposx = e.detail.x;
+              this.titleposy = e.detail.y;
+              this.customStyle['--position-top'] = e.detail.y+"px";
+              this.customStyle['--position-left'] = e.detail.x+"px";
+              this.updateStyles();
+            break;
+          case 'end':
+            this.message = 'Tracking ended!';
+            console.log(this.message);
+            break;
+        }
       }
 
 
