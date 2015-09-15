@@ -28,14 +28,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
 
-    paper-toolbar {
+    .tooly {
       @apply(--layout-horizontal);
       width: 100%;
-
 
     }
 
 
+
+    .tooly button {
+      border: none;
+      outline: none;
+      color: var(--sponny-color);
+      background-color: white;
+      border-radius: 5px;
+      padding: 10px;
+      margin: 3px; 
+      font-size: 16px;
+      @apply(--layout-horizontal);
+      @apply(--layout-center-center);
+
+    }
 
 
   </style>
@@ -49,10 +62,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <div class="stage">
 
       <paper-toolbar>
-        <button>Sponnify!</button>
+      <div class="tooly">
+      <div class="flex"></div>
+        <button on-click="randomize"><img src="images/sponnet-los.png">Sponnify!</button>
+      </div>
       </paper-toolbar>
 
-      <sponnify-canvas>
+      <sponnify-canvas id="canvas">
       </sponnify-canvas>
     </div>
 
@@ -79,7 +95,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           notify: true
         }
 
+      },
+
+      randomize: function(){
+        this.$.canvas.randomizeMe();
       }
+
     });
   })();
   </script>
