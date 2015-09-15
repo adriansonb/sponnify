@@ -16,7 +16,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       display: block;
       width: 100%;
       height: 100%;
-      --sponny-color: red;
+      --sponny-color: #A1D490;
       --sponny-secondcolor: white;
       --position-top: 0px;
       --position-left: 0px;
@@ -36,8 +36,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
 
-    .title img {
+    .canvas img {
       min-width: 100vw;
+      min-height: 100%;
     }
 
     .title {
@@ -46,24 +47,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       bottom: 0;
       left: 0;
       right: 0;*/
-      width: 300px;
+      min-width: 300px;
       height: 300px;
       background-color: transparent;
 
       top: var(--position-top); 
       left: var(--position-left);
 
-      @apply(--layout-vertical);
-      @apply(--layout-center-center);
+/*      @apply(--layout-vertical);
+      @apply(--layout-center-center);*/
       
     }
 
 
   h2 {
-    font-size: 50px;
+    font-size: 60px;
     font-weight: 900;
     color: white;
-    text-shadow: 2px 2px var(--sponny-color);
+    text-shadow: 2px 2px 20px rgba(0,0,0,0.5);
     margin: 0px;
     padding: 0px; 
 
@@ -71,13 +72,39 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   }
 
   h3 {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 300;
     color: black;
     background-color: var(--sponny-color);
-    margin: 0px;
-    padding: 0px; 
+    margin: 10px 0px 0px 0px;
+    padding: 10px; 
     }
+
+
+
+    .topnav {
+      width: 100vw;
+      @apply(--layout-horizontal);
+      @apply(--layout-center-center);
+      @apply(--layout-wrap);
+      border-bottom: 1px solid rgba(0,0,0,0.2);
+      padding: 8vh 0vh 2vh 0vh;
+    }
+
+
+
+    .topnavitem {
+      height: 300px;
+      width: 300px;
+      font-weight: 300;
+      text-align: center;
+    }
+
+  .big {
+    --iron-icon-height: 200px;
+    --iron-icon-width: 200px;
+  }
+
 
     .nav {
       width: 100vw;
@@ -163,14 +190,58 @@ h2 {
     }
 
 
+    paper-toolbar {
+      background-color: transparent;
+    }
+
+
+
+/*    .widthhhh {
+      width: 100%;
+      @apply(--layout-horizontal);
+      background-color: red;
+    }
+
+    .sponnify {
+      width: 200px;
+      height: 150px;
+      @apply(--layout-fit);
+
+      border: none;
+      outline: none;
+      color: black;
+      background-color: rgba(0,0,0,0.1);
+      border-radius: 5px;
+      padding: 10px;
+      margin: 3px 3px 3px 3px; 
+      font-size: 16px;
+      @apply(--layout-horizontal);
+      @apply(--layout-center-center);
+
+
+    }
+
+    .sponnify img {
+      width: 10px;
+    }*/
+
+
+
+
   </style>
   <template>
     <div class="canvas">
-
+<!-- 
+      <div class="widthhhh">
+      <div class="flex">???</div>
+      <div class="sponnify" on-click="randomizeMe">Sponnify!</div>
+     </div> -->
 
       <div class="title" on-track="handleTrack">
         <h2 contenteditable="true">{{spontitel}}</h2>
-        <h3 contenteditable="true">{{sponondertitel}}</h3>
+        <div class="layout horizontal">
+          <h3 contenteditable="true">{{sponondertitel}}</h3>
+        </div>
       </div>
 
       <img src="{{image}}">
@@ -178,9 +249,25 @@ h2 {
 
 
     </div>
-      <div class="nav">
-        <button>Contacteer ons nu!</button>
-        <button>Vrijblijvende offerte</button>
+
+
+      <div class="topnav">
+        <div class="topnavitem">
+<!--           Dit kan je ook kiezen, met een dialog ofzo, cooool -->
+          <iron-icon class="big" icon="menu"></iron-icon>
+          <h4>item1</h4>
+        </div>
+        <div class="topnavitem">
+<!--           Dit kan je ook kiezen, met een dialog ofzo, cooool -->
+          <iron-icon class="big" icon="print"></iron-icon>
+          <h4>item2</h4>
+        </div>
+        <div class="topnavitem">
+<!--           Dit kan je ook kiezen, met een dialog ofzo, cooool -->
+          <iron-icon class="big" icon="help"></iron-icon>
+          <h4>item3</h4>
+        </div>  
+
       </div>
 
     <div contenteditable="true" class="extrainfo">
@@ -191,6 +278,15 @@ Cras maximus purus vitae blandit lobortis. Nam sit amet magna ut erat sodales so
       </p>
 
     </div>
+
+      <div class="nav">
+        <button>Contacteer ons nu!</button>
+        <button>Vrijblijvende offerte</button>
+      </div>
+
+
+
+
 
     <div class="footer">
 
@@ -232,7 +328,7 @@ Cras maximus purus vitae blandit lobortis. Nam sit amet magna ut erat sodales so
 
         kleuren: {
           type: Array,
-          value: [ { kleur: "red" },{ kleur: "blue" },{ kleur: "green" },{ kleur: "grey" } ],
+          value: [ { kleur: "#4F8534" },{ kleur: "#AB022C" },{ kleur: "#028FAB" },{ kleur: "grey" } ],
           notify: true
         }
 

@@ -21,10 +21,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
     .stage {
-      background-color: red;
       width: 100%;
-      height: 100%;
       @apply(--layout-vertical);
+    }
+
+    paper-toolbar {
+      background-color: rgba(0,0,0,0.7);
+            height: 90px;
+
     }
 
 
@@ -39,16 +43,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     .tooly button {
       border: none;
       outline: none;
-      color: var(--sponny-color);
-      background-color: white;
+      color: black;
+      background-color: rgba(0,0,0,0.1);
       border-radius: 5px;
       padding: 10px;
-      margin: 3px; 
+      margin: 3px 3px 3px 3px; 
       font-size: 16px;
       @apply(--layout-horizontal);
       @apply(--layout-center-center);
     }
 
+
+    .tooly img {
+      margin-right: 10px; 
+
+    }
 
   </style>
 
